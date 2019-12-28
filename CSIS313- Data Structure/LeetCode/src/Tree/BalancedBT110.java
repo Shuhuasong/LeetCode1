@@ -14,7 +14,6 @@ public class BalancedBT110 {
         if(root.left == null && root.right == null) return true;
         int leftH = height(root.left);
         int rightH = height(root.right);
-        System.out.println(leftH);
          if(Math.abs(leftH-rightH)<= 1)
              return isBalanced(root.left) && isBalanced(root.right);
          return false;
