@@ -9,6 +9,27 @@ public class GenerateParenthese22 {
 
     public List<String> generateParenthesis(int n) {
         List<String> res = new ArrayList<>();
+        if(n==0) return res;
+        dfs(n, n, " ", res);
+        return res;
+    }
+
+    public void dfs(int left, int right, String s, List<String> res){
+        if(left==0 && right==0){
+            res.add(s);
+            return;
+        }
+        if(left>0){
+            dfs(left-1, right, s+'(', res);
+        }
+        if(right>0 && left < right){
+            dfs(left, right-1, s+')', res);
+        }
+    }
+
+
+   /* public List<String> generateParenthesis(int n) {
+        List<String> res = new ArrayList<>();
         if(n==0) return new LinkedList<>();
         else if(n==1){
             res.add("()");
@@ -34,6 +55,8 @@ public class GenerateParenthese22 {
             cur.setLength(cur.length()-1);
         }
     }
+
+    */
 
 
     /* //recursive

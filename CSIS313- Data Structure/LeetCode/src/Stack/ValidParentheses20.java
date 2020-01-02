@@ -14,7 +14,7 @@ public class ValidParentheses20 {
                 else if(c=='}' && stack.peek() !='{') return false;
                 else stack.pop();
             }else{
-                return false;
+                return false; //where the stack is empty, and there is no any open parenthese match with this close parenthese
             }
         }
         return stack.isEmpty();
