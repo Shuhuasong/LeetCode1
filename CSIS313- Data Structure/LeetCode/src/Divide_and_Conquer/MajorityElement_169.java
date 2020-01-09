@@ -32,6 +32,8 @@ public class MajorityElement_169 {
      Logic: if the array has the majority element, it will surely lie in
      the center of the array. since the majority element will be present >n/2 times;
      */
+
+
     //Time Complexity: O(n), Space Complexity: O(1)
     public int majorityElement(int[] nums) {
         Arrays.sort(nums);
