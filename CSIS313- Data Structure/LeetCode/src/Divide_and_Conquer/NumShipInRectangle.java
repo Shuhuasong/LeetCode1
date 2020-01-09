@@ -1,7 +1,7 @@
 package Divide_and_Conquer;
 
 import java.util.Vector;
-
+/*
 public class NumShipInRectangle {
 
     class Sea {
@@ -22,3 +22,5 @@ public class NumShipInRectangle {
     }
 
 }
+
+ */
