@@ -4,6 +4,7 @@ import java.util.*;
 
 public class FindKthSmall_719 {
 
+    //Time Complexity: O(n)
     public int smallestDistancePair(int[] nums, int k){
         Arrays.sort(nums);
         int n = nums.length;

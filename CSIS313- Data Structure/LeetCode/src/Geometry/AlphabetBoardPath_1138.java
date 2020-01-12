@@ -1,6 +1,6 @@
 package Geometry;
 
-public class AlphabetBoardPath {
+public class AlphabetBoardPath_1138 {
 
     //Time Complexity: O(n)
     /*
