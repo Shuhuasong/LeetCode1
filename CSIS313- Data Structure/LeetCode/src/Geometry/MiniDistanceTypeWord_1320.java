@@ -13,6 +13,10 @@ We want to know what is the maximum that we can save.
 
 dp[i] means that, the position of our second finger is at character i,
 and the maximum we can save is dp[i].
+
+In our dynamic programming, dp[a] means that,
+if our left finger ends at character a,
+the maximum we can save is dp[a].
  */
 
     public int minimumDistance(String word) {
