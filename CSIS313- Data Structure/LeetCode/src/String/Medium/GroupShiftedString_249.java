@@ -14,11 +14,37 @@ Eg: given: ["abc","bcd","acef", "xyz","az","ba","a","z"]
  */
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
+//
 public class GroupShiftedString_249 {
     public List<List<String>> groupStrings(String[] strings){
         List<List<String>> res = new ArrayList<>();
+        HashMap<String, ArrayList<String>> map = new HashMap<>();
+
+        for(String s : strings){
+            char[] arr = s.toCharArray();
+            if(arr.length>0){
+                int diff = arr[0] - 'a';
+                for(int i=0; i<arr.length; i++){
+                    if(arr[i]-diff < 'a'){
+                        arr[i] = (char)(arr[i]-diff+26);
+                    }else{
+                        arr[i] = (char)(arr[i]-diff);
+                    }
+                }
+            }
+            String keyS = new String(arr);
+            if(map.containsKey(keyS)){
+                 map.get(keyS).add(s);
+            }else{
+                ArrayList<String> list = new ArrayList<>();
+                list.add(keyS);
+            }
+        }
+        res.addAll(map.values());
+        return res;
     }
 
 }
