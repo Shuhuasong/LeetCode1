@@ -3,8 +3,11 @@ package String.Easy;
 import java.util.HashMap;
 
 public class IsomorphicString_205 {
-    // run: 8ms (68%)
-    public boolean isIsomorphic(String s, String t) {
+
+    //Time: O(n)
+    //Space: O(1) // the maximum of space is 26 hashmap
+    // run: 5ms (50%)
+  /*  public boolean isIsomorphic(String s, String t) {
         if(s==null || t==null) return true;
         HashMap<Character, Character> map = new HashMap<>();
         int n = s.length();
@@ -27,5 +30,14 @@ public class IsomorphicString_205 {
         return true;
     }
 
+   */
+  // run time: 5ms (80%)
+
+    public boolean isIsomorphic(String s, String t) {
+        for(int i=0; i<s.length(); i++){
+            if(s.indexOf(s.charAt(i))!= t.indexOf(t.charAt(i))) return false;
+        }
+        return true;
+    }
 
 }
