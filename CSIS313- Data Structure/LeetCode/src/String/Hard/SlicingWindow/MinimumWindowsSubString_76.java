@@ -54,13 +54,39 @@ package String.Hard.SlicingWindow;
 }
  */
 
-
+//run time: 6ms (74%)
 public class MinimumWindowsSubString_76 {
     public String minWindow(String s, String t){
        if(s==null || t==null || s.length()==0 || t.length()==0|| s.length() < t.length()){
            return "";
        }
+       int[] bank = new int[256];
+       int left = 0, right = 0;
+       int min = Integer.MAX_VALUE;
+       String minStr = "";
+       int count = 0;
+       //Ini
+       for(char c : t.toCharArray()){
+           bank[c]++;
+       }
 
+       while(right<s.length()){
+           if(bank[s.charAt(right++)] > 0){
+               bank[s.charAt(right++)]--;
+               count++;
+           }
+           while(count==t.length()){
+               if(min > right-left){
+                   min = right - left;
+                   minStr = s.substring(left, right);
+               }
+
+               if(++bank[s.charAt(left++)]>0){
+                   count--;
+               }
+           }
+       }
+       return minStr;
     }
 }
 
