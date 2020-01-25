@@ -7,7 +7,7 @@ public class PalindromePartitioning_131 {
 
     //run time: 15 ms (5.55%) 59.1MB
     //Time complexity: O(n * (2^n)), Space: O(n)
-    public List<List<String>> partition(String s) {
+ /*   public List<List<String>> partition(String s) {
         List<List<String>> res = new ArrayList<List<String>>();
         List<String>  l = new ArrayList<String>();
         helper(res, l, s, 0);
@@ -39,9 +39,11 @@ public class PalindromePartitioning_131 {
         return true;
     }
 
+  */
+//*******************************************************************
 
-/*  //run time: 10 ms, (6.74% ) 60.6 MB
-    public List<List<String>> partition(String s){
+  //run time: 10 ms, (6.74% ) 60.6 MB
+  public List<List<String>> partition(String s) {
         List<List<String>> res = new ArrayList<>();
         List<String> list = new ArrayList<>();
         dfs(s, 0, list, res);
@@ -69,5 +71,5 @@ public class PalindromePartitioning_131 {
     }
 
 
- */
+
 }
