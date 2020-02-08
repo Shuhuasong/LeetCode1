@@ -18,20 +18,8 @@ public class LLReverse {
             this.next = next; ;
         }
 
-        void printNode(listNode node, File outFile) throws IOException {
-        try{
-            if(!outFile.exists()){
-                outFile.createNewFile();
-            }
-            FileWriter fw = new FileWriter(outFile);
-            BufferedWriter bw = new BufferedWriter(fw);
-            bw.write(node.data);
-            bw.write(node.hashCode());
-            bw.write(node.next.hashCode());
-            bw.write(node.next.data);
-        }catch(Exception e){
-            e.printStackTrace();
-        }
+        void printNode(listNode node, FileWriter fw) throws IOException {
+            fw.write("(" + node.data + " ," + node + " ," + node.next + " ," + node.next.data + ")");
        }
     }
 
@@ -44,6 +32,15 @@ public class LLReverse {
            listHead = dummy;
        }
        //Construct a LinkedList
+       void constructLL(Scanner reader, FileWriter writer) throws IOException {
+           while(reader.hasNext()){ //while there is another token to read
+               String str = reader.next();//reads in the String tokens and skip white-space character to start reading next token
+               listNode newNode = new listNode(str, null);//can't use nextLine(), because the '\n' character is part of a valid line token. it will return empty string
+               listInsert(newNode);
+               printList(writer);
+               System.out.println(str);
+           }
+       }
 
        void listInsert(listNode newNode) {
            listNode spot = findSpot(newNode);
@@ -59,19 +56,67 @@ public class LLReverse {
            }
            return curNode;
        }
+
+       listNode findMiddleNode(FileWriter fw) throws IOException {
+           listNode  walk1 = listHead;
+           listNode walk2 = listHead;
+           listNode node = new listNode();
+           while(walk2 != null && walk2.next != null){
+               node.printNode(walk1, fw);
+               walk1 = walk1.next;
+               walk2 = walk2.next.next;
+           }
+           return walk1;
+       }
+       void reverseLL(FileWriter fw) throws IOException {
+           listNode last = listHead.next;
+           while(last != null && last.next != null){
+               listNode  spot = last.next;
+               moveSpotNodeToFront(spot);
+               printList(fw);
+               last = last.next;
+           }
+       }
+       void moveSpotNodeToFront(listNode spot){
+           spot.next = listHead.next;
+           listHead.next = spot;
+       }
+
+
+
+       void printList(FileWriter fw) throws IOException {
+           listNode cur = listHead;
+           while(cur != null){
+               fw.write("listHead->");
+               fw.write("(" + cur.data + " ," + cur + " ," + cur.next + " ," + cur.next.data + ")");
+               cur = cur.next;
+           }
+           fw.write("(" + cur.data + " ," + "NULL" +  ")->");
+           fw.write("NULL" + "\n");
+       }
     }
 
-    public static void main(String args[]) throws FileNotFoundException {
-        Scanner inFile = new Scanner(new FileReader(args[1]));
-        Scanner outFile1 = new Scanner(new FileReader(args[2]));
-        Scanner outFile2 = new Scanner(new FileReader(args[3]));
+    public static void main(String args[]) throws IOException {
+        //The Scanner class is used to read file in tokens from an input stream
+        LinkedList list = null;
 
+        Scanner reader = new Scanner(new FileInputStream(args[1]));
+        FileWriter writer1 = new FileWriter(new File(args[2]));
+        FileWriter writer2 = new FileWriter(new File(args[3]));
 
-        inFile.close();
-        outFile1.close();
-        outFile2.close();
+        //print the completed linkedlist
+        list.constructLL(reader, writer2);
+        list.printList(writer1);
+
+        list.reverseLL(writer2);
+        list.printList(writer1);
+
+        reader.close();
+        writer1.close();
+        writer2.close();
 
         /*
+        Scanner inFile = new Scanner(new FileReader(args[1]));
          inFile.next()
         read string from the input file:
         String str;
