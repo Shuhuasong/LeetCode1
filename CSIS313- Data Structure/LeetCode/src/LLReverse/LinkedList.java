@@ -1,12 +1,11 @@
 package LLReverse;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.Scanner;
 import java.io.*;
 
-public class LLReverse {
-    class listNode {
+public class LinkedList {
+    static class listNode {
         String data;
         listNode next;
         listNode(){
@@ -23,7 +22,7 @@ public class LLReverse {
        }
     }
 
-    class LinkedList {
+
        listNode listHead;
 
        //Constructor
@@ -32,7 +31,7 @@ public class LLReverse {
            listHead = dummy;
        }
        //Construct a LinkedList
-       void constructLL(Scanner reader, FileWriter writer) throws IOException {
+       void constructLL(Scanner reader, BufferedWriter writer) throws IOException {
            while(reader.hasNext()){ //while there is another token to read
                String str = reader.next();//reads in the String tokens and skip white-space character to start reading next token
                listNode newNode = new listNode(str, null);//can't use nextLine(), because the '\n' character is part of a valid line token. it will return empty string
@@ -68,7 +67,7 @@ public class LLReverse {
            }
            return walk1;
        }
-       void reverseLL(FileWriter fw) throws IOException {
+       void reverseLL(BufferedWriter fw) throws IOException {
            listNode last = listHead.next;
            while(last != null && last.next != null){
                listNode  spot = last.next;
@@ -84,7 +83,7 @@ public class LLReverse {
 
 
 
-       void printList(FileWriter fw) throws IOException {
+       void printList(BufferedWriter fw) throws IOException {
            listNode cur = listHead;
            while(cur != null){
                fw.write("listHead->");
@@ -94,15 +93,15 @@ public class LLReverse {
            fw.write("(" + cur.data + " ," + "NULL" +  ")->");
            fw.write("NULL" + "\n");
        }
-    }
+
 
     public static void main(String args[]) throws IOException {
         //The Scanner class is used to read file in tokens from an input stream
-        LinkedList list = null;
+        LinkedList list = new LinkedList();
 
-        Scanner reader = new Scanner(new FileInputStream(args[1]));
-        FileWriter writer1 = new FileWriter(new File(args[2]));
-        FileWriter writer2 = new FileWriter(new File(args[3]));
+        Scanner reader = new Scanner(new FileReader(args[0]));
+        BufferedWriter writer1 = new BufferedWriter(new  FileWriter(new File(args[1]))) ;
+        BufferedWriter writer2 = new BufferedWriter(new  FileWriter(new File(args[2]))) ;
 
         //print the completed linkedlist
         list.constructLL(reader, writer2);
