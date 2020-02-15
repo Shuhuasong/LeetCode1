@@ -1,7 +1,7 @@
 package DFSandBFS;
 
 public class SurroundedRegions_130 {
-    //Time
+    //Time: O(n^2) Space: O(n^2)
     public void solve(char[][] board) {
         if (board == null || board.length == 0) return;
         int rows = board.length, cols = board[0].length;
