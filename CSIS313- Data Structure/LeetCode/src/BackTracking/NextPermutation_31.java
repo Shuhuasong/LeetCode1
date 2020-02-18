@@ -1,6 +1,7 @@
 package BackTracking;
 
 public class NextPermutation_31 {
+    //Bruce force: O(n!)
     //Time: O(n) Space: O(1)
     public void nextPermutation(int[] nums) {
         //find the first pair that num[i] < num[i+1]
