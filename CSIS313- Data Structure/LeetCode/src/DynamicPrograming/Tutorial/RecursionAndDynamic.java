@@ -23,7 +23,7 @@ public class RecursionAndDynamic {
         if(n < 0) return 0;
         else if(n==0) return 1;
         else{
-           return countWays1(n-1)+countWays1(n-2)+countWays1(n-3);
+           return countWays1(n-1)+countWays1(n-2)+countWays1(n-3); //3 * n^3
         }
     }
 
@@ -79,7 +79,7 @@ public class RecursionAndDynamic {
     }
 
 
-    //Solution 2: findig duplicate work point(r-1)(c-1)
+    //Solution 2: finding duplicate work point(r-1)(c-1)
 
     ArrayList<Point> getPath(boolean[][] grid){
         if(grid==null || grid.length==0) return null;
@@ -106,5 +106,59 @@ public class RecursionAndDynamic {
         failPoints.add(p);
         return false;
     }
+
+
+    //Question 3:
+    /*
+    Magic Index: A magic index in an array A[ 1 .•. n-1] is defined to be an index such that A[ i]
+i. Given a sorted array of distinct integers, write a method to find a magic index, if one exists, in
+array A.
+           0   1   2   3   4   *5   6   7   8   9  10
+           -40 -20 -1  1   2   *3   5   7   9   12 13
+FOLLOW UP
+(2)What if the values are not distinct?
+            0   1   2   3   4   *5   6   7   8   9  10
+           -10 -5   2   2   2   *3   4   4   9   12 13
+     */
+
+     int magicFast(int[] arr){
+         return magicFast(arr, 0, arr.length-1);
+     }
+
+     int magicFast(int[] arr, int start, int end){
+         while(end > start){
+             int mid = start+(end-start)/2;
+             if(arr[mid]==mid) return mid;
+             else if(arr[mid] < mid){
+                 return magicFast(arr, mid+1, end);
+             }else{
+                 return magicFast(arr, start, mid-1);
+             }
+         }
+         return -1;
+     }
+
+     //(2)What if the values are not distinct?
+
+     int magicFast2(int[] arr){
+         return magicFast2(arr, 0, arr.length-1);
+     }
+
+     int magicFast2(int[] arr, int start, int end){
+         if(end < start) return -1;
+         int midIndex = (start+end)/2;
+         int midValue = arr[midIndex];
+
+         if(midValue == midIndex) return midIndex;
+         // search left
+         int leftIndex = Math.min(midIndex-1,midValue);
+         int left = magicFast(arr, start, leftIndex);
+         if(left >= 0) return left;
+
+         //search right
+         int rightIndex = Math.max(midIndex+1, midValue);
+         int right = magicFast(arr, rightIndex, end);
+         return right;
+     }
 
 }
