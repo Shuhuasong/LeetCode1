@@ -14,7 +14,7 @@ public class ThreeSum_15 {
         List<List<Integer>> res = new ArrayList<>();
         Arrays.sort(nums);
         for(int i=0; i<nums.length-2; i++){ //use two pointer
-            if(i>0 && nums[i] == nums[i-1]) continue; //repeat [-1,-1, 0, 1,2,3,4]
+            if(i>0 && nums[i] == nums[i-1]) continue; //skip repeat [-1,-1, 0, 1,2,3,4]
             int low = i+1, high = nums.length-1, sum = 0 - nums[i];
             while(low<high){
                 if(nums[low] + nums[high]==sum){

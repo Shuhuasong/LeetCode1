@@ -26,8 +26,40 @@ public class LongestPalindrom {
     }
 
     */
+/*
+    public String longestPalindrome(String s) {
+        if(s==null || s.length()<2) return s;
+        int len = s.length();
+        char[] sChar = s.toCharArray();
+        int start = 0;
+        int length = 1;
+        boolean[][] isPalindrome = new boolean[len][len];
+        for(int i=0; i<len; i++){  //length = 1
+            isPalindrome[i][i] = true;
+        }
 
-   //6ms, (87%)
+        for(int i=0; i < len-1; i++){  //length = 2
+            if(sChar[i]==sChar[i+1]){
+                isPalindrome[i][i+1] = true;
+                start = i;
+                length = 2;
+            }
+        }
+        for(int i=3; i<=len; i++) {
+            for(int j=0; j+i-1 < len; j++){
+                if(sChar[j]==sChar[j+i-1] && isPalindrome[j+1][j+i-2]==true){
+                    isPalindrome[j][j+i-1] = true;
+                    start = j;
+                    length = i;
+                }
+            }
+        }
+        return s.substring(start, start+length);
+    }
+    */
+
+
+    //6ms, (87%)
     public String longestPalindrome(String s) {
         int len = 0;// the best lenght
         int start = 0;
