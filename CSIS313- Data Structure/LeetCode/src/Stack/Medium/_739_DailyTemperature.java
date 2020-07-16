@@ -6,7 +6,7 @@ public class _739_DailyTemperature {
 
     //Solution 1: Brute Force
     //Time: O(n^2)  Space: O(1)
-    public int[] dailyTemperatures(int[] T) {
+ /*   public int[] dailyTemperatures(int[] T) {
         if(T==null || T.length==0) return new int[0];
         int[] res = new int[T.length];
         for(int i=0; i<T.length-1; i++){
@@ -21,11 +21,13 @@ public class _739_DailyTemperature {
         return res;
     }
 
+  */
+
 
 
     //Solution 2: Using Stack
     //Time: O(n)  Space: O(n)
-    public int[] dailyTemperatures(int[] T) {
+ /*   public int[] dailyTemperatures(int[] T) {
         int[] res = new int[T.length];
         Stack<Integer> s = new Stack<>();
         for(int i=0; i<T.length; i++){
@@ -37,6 +39,8 @@ public class _739_DailyTemperature {
         }
         return res;
     }
+    
+  */
 
 
     //Solution 3: Changing Stack to array
