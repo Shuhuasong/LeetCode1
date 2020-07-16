@@ -55,7 +55,7 @@ public class _743_NetworkDelayTime {
     //Solution #2:  using queue
     // Time: O(n^2)  Space: O(n+e)
 
-    List<Integer>[] graph;
+/*    List<Integer>[] graph;
     Map<String, Integer> map;
     public int networkDelayTime(int[][] times, int N, int K) {
         graph = new ArrayList[N+1];
@@ -100,4 +100,6 @@ public class _743_NetworkDelayTime {
         }
         return res;
     }
+
+ */
 }
