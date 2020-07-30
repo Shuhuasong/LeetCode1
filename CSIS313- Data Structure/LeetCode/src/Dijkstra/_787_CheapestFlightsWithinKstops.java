@@ -40,7 +40,7 @@ public class _787_CheapestFlightsWithinKstops {
 
     //Solution #2:  using heap + 2D array
     // Time: O(nlogn)  Space: O(n+e)
-    public int findCheapestPrice(int n, int[][] flights, int src, int dst, int K) {
+  /*  public int findCheapestPrice(int n, int[][] flights, int src, int dst, int K) {
         int[][] graph = new int[n][n];
         for(int[] f : flights){ //f[0] : src   f[1]: dst   f[2]: cost
             graph[f[0]][f[1]] = f[2];
@@ -62,4 +62,6 @@ public class _787_CheapestFlightsWithinKstops {
         }
         return -1;
     }
+
+   */
 }
